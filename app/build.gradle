@@ -1,0 +1,63 @@
+plugins {
+    alias(libs.plugins.androidApplication)
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    namespace 'com.example.arpshoplist'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.arpshoplist"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+    //Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-livedata:2.7.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.7.0"
+
+    //Legacy Support
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Navigation Framework
+    implementation 'androidx.navigation:navigation-fragment:2.7.7'
+    implementation 'androidx.navigation:navigation-ui:2.7.7'
+
+    //Room Components
+    implementation "androidx.room:room-runtime:2.6.1"
+//    implementation libs.lifecycle.livedata.ktx
+//    implementation libs.lifecycle.viewmodel.ktx
+    annotationProcessor "androidx.room:room-compiler:2.6.1"
+    androidTestImplementation "androidx.room:room-testing:2.6.1"
+
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
